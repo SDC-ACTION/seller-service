@@ -5,9 +5,13 @@ const { retrieveSellers } = require('../database/models/sellers');
 const { createQuotes } = require('../services/quotes');
 
 const prices = (req, res) => {
-  if (req.query.productId !== undefined) {
-    retrievePrices(req.query.productId)
-      .then((productData) => res.send(productData));
+  console.log(req.params);
+  if (req.params.productId !== undefined) {
+    retrievePrices(req.params.productId)
+      .then((productData) => {
+        console.log('got it');
+        res.send(productData);
+      });
   } else {
     retrievePrices()
       .then((productData) => res.send(productData));
@@ -21,8 +25,8 @@ const sellers = (req, res) => {
 
 const quotes = (req, res) => {
   let id = null;
-  if (req.query.productId) {
-    id = req.query.productId;
+  if (req.params.productId) {
+    id = req.params.productId;
   }
 
   if (id && isNaN(Number(id))) {
@@ -41,7 +45,7 @@ const quotes = (req, res) => {
       priceInfo = productData;
       return true;
     })
-    .then(() => createQuotes(priceInfo, sellerInfo, req.query.sellerLimit))
+    .then(() => createQuotes(priceInfo, sellerInfo, req.params.sellerLimit))
     .then((quoteData) => {
       if (!quoteData.length) {
         return res.status(404).send('Product Not Found.');
