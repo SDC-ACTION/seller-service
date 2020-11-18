@@ -21,21 +21,17 @@ const create = (seller) => {
 
 const get = (sellerId) => Seller.find({ id: sellerId });
 
-const remove = (sellerId) => {
-  console.log(sellerId);
-  return Seller.deleteMany({ id: sellerId });
-};
+const remove = (sellerId) => Seller.deleteMany({ id: sellerId });
 
-const update = (seller) => {
-  console.log(seller);
-  return Seller.findOneAndUpdate({
+const update = (seller) => Seller.findOneAndUpdate(
+  {
     id: seller.id,
   }, {
     name: seller.name,
     returnPolicy: seller.returnPolicy,
     delivery: seller.delivery,
-  });
-};
+  },
+);
 
 const retrieveSellers = () => Seller.find()
   .limit()

@@ -3,7 +3,6 @@ const sellers = require('../database/models/sellers');
 module.exports = {
   create: (req, res) => {
     if (req.body.seller !== undefined) {
-      console.log('body seller', req.body.seller);
       sellers.create(req.body.seller)
         .then((data) => {
           console.log('returned data after save', data);
@@ -42,7 +41,6 @@ module.exports = {
     }
   },
   remove: (req, res) => {
-    console.log(req.params.sellerId);
     if (req.params.sellerId !== undefined) {
       sellers.remove(req.params.sellerId)
         .then(() => res.send(200))
