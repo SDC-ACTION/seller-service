@@ -1,11 +1,12 @@
 const express = require('express');
 require('dotenv').config();
 const path = require('path');
-const cors = require('cors');
+const db = require('../database');
 
 // middleware
 const morgan = require('morgan');
 const parser = require('body-parser');
+const cors = require('cors');
 
 // router
 const router = require('./routes');
