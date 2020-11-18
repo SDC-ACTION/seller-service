@@ -1,6 +1,5 @@
 const express = require('express');
 const products = require('../controller/products');
-// const prices = require('../controller/prices');
 const sellers = require('../controller/sellers');
 
 const router = express.Router();
