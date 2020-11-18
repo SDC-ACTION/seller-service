@@ -1,6 +1,6 @@
 # Project Name
 
-> Project description
+> Seller Service
 
 ## Related Projects
 
@@ -17,14 +17,39 @@
 
 ## Usage
 
-> Some usage instructions
+> POST /api/seller
+  body
+    {
+      "seller": {
+          "delivery": {
+          "free": "True",
+          "minimumPurchase": 0,
+          "days": 2,
+          "fee": 0
+          },
+          "id": 21,
+          "name": "Mama",
+          "returnPolicy": "Return-eligible for 60 days"
+      }
+    }
+> GET /api/seller/:sellerId
+> PUT /api/seller
+  body
+    {
+        "seller": {
+            "delivery": {
+            "free": "True",
+            "minimumPurchase": 0,
+            "days": 2,
+            "fee": 0
+            },
+            "id": 20,
+            "name": "Anabell",
+            "returnPolicy": "Return-eligible for 60 days"
+        }
+    }
+> DEL /api/seller/:sellerId
 
-## Requirements
-
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 6.13.0
-- etc
 
 ## Development
 
