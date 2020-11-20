@@ -17,8 +17,8 @@
 
 ## Usage
 
-> POST /api/seller
-  body
+### POST /api/seller
+```  body
     {
       "seller": {
           "delivery": {
@@ -32,8 +32,10 @@
           "returnPolicy": "Return-eligible for 60 days"
       }
     }
-> GET /api/seller/:sellerId
-> PUT /api/seller
+```
+### GET /api/seller/:sellerId
+### PUT /api/seller
+```
   body
     {
         "seller": {
@@ -48,7 +50,8 @@
             "returnPolicy": "Return-eligible for 60 days"
         }
     }
-> DEL /api/seller/:sellerId
+```
+### DEL /api/seller/:sellerId
 
 
 ## Development
