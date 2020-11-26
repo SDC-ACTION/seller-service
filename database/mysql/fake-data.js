@@ -1,7 +1,7 @@
 module.exports = {
-  productCount: 100,
-  productSellerCount: 300,
-  sellerCount: 5,
+  productCount: 10000000,
+  productSellerCount: 30000000,
+  sellerCount: 500000,
   prices: [9.99, 19.99, 29.99, 39.99, 49.99, 59.99, 99.99],
   sellers: [
     'Tortor City Centre',

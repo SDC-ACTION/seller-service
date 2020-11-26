@@ -45,7 +45,7 @@ writeToFile(writeProductSeller, 'utf-8', fakeFn.getProductSeller, fake.productSe
 
 const writeSeller = fs.createWriteStream('./data/seller.csv');
 writeSeller.write('id, name, return_policy_id, delivery_id\n');
-writeToFile(writeSeller, 'utf-8', fakeFn.getSeller, fake.productCount, () => {
+writeToFile(writeSeller, 'utf-8', fakeFn.getSeller, fake.sellerCount, () => {
   writeSeller.end();
 });
 
@@ -69,3 +69,5 @@ writeTax.write('state, combined_rate\n');
 writeToFile(writeTax, 'utf-8', fakeFn.getTax, fake.stateTaxRates.length, () => {
   writeTax.end();
 });
+
+console.log('Data seed complete!');

@@ -16,7 +16,7 @@ module.exports = {
   },
   getDeliveryOption: (index) => {
     const i = index - 1;
-    return `"${i}","${fake.deliveryOptions[i].fee}","${fake.deliveryOptions[i].minPurchase}","${fake.deliveryOptions[i].days}"\n`;
+    return `"${index}","${fake.deliveryOptions[i].fee}","${fake.deliveryOptions[i].minPurchase}","${fake.deliveryOptions[i].days}"\n`;
   },
   getReturnPolicy: (index) => {
     const i = index - 1;
