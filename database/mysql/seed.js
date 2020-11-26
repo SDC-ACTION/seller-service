@@ -1,8 +1,8 @@
 /* eslint-disable no-plusplus */
 const fs = require('fs');
 const path = require('path');
-const fake = require('./fake-data');
-const fakeFn = require('./generator');
+const fake = require('../fake-data');
+const fakeFn = require('../generator');
 
 // folder for csv files
 fs.mkdir(path.join(__dirname, '/data'), () => { });
