@@ -71,4 +71,3 @@ writeToFile(writeTax, 'utf-8', fakeFn.getTax, fake.stateTaxRates.length, () => {
 });
 
 console.log('Data seed complete!');
-process.exit();
