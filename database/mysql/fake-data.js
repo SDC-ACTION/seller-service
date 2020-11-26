@@ -1,4 +1,7 @@
-export default {
+module.exports = {
+  productCount: 100,
+  productSellerCount: 300,
+  sellerCount: 5,
   prices: [9.99, 19.99, 29.99, 39.99, 49.99, 59.99, 99.99],
   sellers: [
     'Tortor City Centre',
@@ -69,4 +72,5 @@ export default {
       rate: 4.00,
     },
   ],
+
 };

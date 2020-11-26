@@ -1,43 +1,71 @@
-const data = require('./data');
+/* eslint-disable no-plusplus */
+const fs = require('fs');
+const path = require('path');
+const fake = require('./fake-data');
+const fakeFn = require('./generator');
 
-const productCount = 100000;
-const productSellerCount = 300000;
-const sellerCount = 5000;
+// folder for csv files
+fs.mkdir(path.join(__dirname, '/data'), () => { });
+
+// generic funciton that writes large data to stream
+const writeToFile = (writer, encoding, getText, size, callback) => {
+  let i = 1;
+  function write() {
+    let ok = true;
+    do {
+      const data = getText(i);
+      if (i === size) {
+        // Last time!
+        writer.write(data, encoding, callback);
+      } else {
+        // See if we should continue, or wait.
+        // Don't pass the callback, because we're not done yet.
+        ok = writer.write(data, encoding);
+      }
+      i += 1;
+    } while (i <= size && ok);
+    if (i <= size) {
+      // Had to stop early!
+      // Write some more once it drains.
+      writer.once('drain', write);
+    }
+  }
+  write();
+};
 
 // product-seller
 
-for (let i = 1; i <= productSellerCount; i++) {
-  const product = {
-    id: i,
-    productId: Math.ceil(Math.random() * productCount),
-    sellerId: Math.ceil(Math.random() * sellerCount),
-    price: data.prices[Math.floor(Math.random() * data.prices.length)],
-  };
-}
+const writeProductSeller = fs.createWriteStream('./data/product_seller.csv');
+writeProductSeller.write('product_id, seller_id, price\n');
+writeToFile(writeProductSeller, 'utf-8', fakeFn.getProductSeller, fake.productSellerCount, () => {
+  writeProductSeller.end();
+});
 
 // seller
 
-const seller = {};
-for (let i = 1; i <= sellerCount; i++) {
-  seller.id = i;
-  seller.name = data.sellers[Math.floor(Math.random() * data.sellers.length)];
-  seller.policyId = data.returnPolicies[Math.ceil(Math.random() * data.returnPolicies.length)];
-  seller.deliveryId = data.delivery[Math.ceil(Math.random() * data.delivery.length)];
-}
+const writeSeller = fs.createWriteStream('./data/seller.csv');
+writeSeller.write('id, name, return_policy_id, delivery_id\n');
+writeToFile(writeSeller, 'utf-8', fakeFn.getSeller, fake.productCount, () => {
+  writeSeller.end();
+});
 
 // delivery option
-
-for (let i = 1; i <= data.deliveryOptions.length; i++) {
-  const deliveryOption = { id: i, ...data.deliveryOptions[i] };
-}
+const writeDeliveryOption = fs.createWriteStream('./data/delivery_option.csv');
+writeDeliveryOption.write('id, fee, min_amount, days\n');
+writeToFile(writeDeliveryOption, 'utf-8', fakeFn.getDeliveryOption, fake.deliveryOptions.length, () => {
+  writeDeliveryOption.end();
+});
 
 // return policy
+const writeReturnPolicy = fs.createWriteStream('./data/return_policy.csv');
+writeReturnPolicy.write('id, description\n');
+writeToFile(writeReturnPolicy, 'utf-8', fakeFn.getReturnPolicy, fake.returnPolicies.length, () => {
+  writeReturnPolicy.end();
+});
 
-for (let i = 1; i <= data.returnPolicies.length; i++) {
-  const returnPolicy = { id: i, ...data.returnPolicies[i] };
-}
 // tax
-
-for (let i = 1; i <= data.stateTaxRates.length; i++) {
-  const stateTaxRate = { id: i, ...data.stateTaxRatess[i] };
-}
+const writeTax = fs.createWriteStream('./data/state_tax.csv');
+writeTax.write('state, combined_rate\n');
+writeToFile(writeTax, 'utf-8', fakeFn.getTax, fake.stateTaxRates.length, () => {
+  writeTax.end();
+});
