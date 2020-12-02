@@ -10,9 +10,9 @@ module.exports = {
   getSeller: (i) => {
     const id = i;
     const name = fake.sellers[Math.floor(Math.random() * fake.sellers.length)];
-    const policyId = Math.floor(Math.random() * fake.returnPolicies.length);
+    const policyId = Math.ceil(Math.random() * fake.returnPolicies.length);
     // eslint-disable-next-line max-len
-    const deliveryId = Math.floor(Math.random() * fake.deliveryOptions.length);
+    const deliveryId = Math.ceil(Math.random() * fake.deliveryOptions.length);
     return `"${id}","${name}","${policyId}","${deliveryId}"\n`;
   },
   getDeliveryOption: (index) => {
