@@ -1,0 +1,338 @@
+Last login: Sun Nov 29 10:31:13 on console
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+MacBook-Pro:~ anabell$ cd Documents/Develop/
+MacBook-Pro:Develop anabell$ brew install couchdb
+Updating Homebrew...
+==> Auto-updated Homebrew!
+Updated 4 taps (heroku/brew, homebrew/core, homebrew/services and mongodb/brew).
+==> New Formulae
+aerc                                     libxcb
+alsa-lib                                 libxcomposite
+arturo                                   libxcursor
+asroute                                  libxdamage
+aws-rotate-key                           libxdmcp
+bit-git                                  libxext
+blaze                                    libxfixes
+box2d                                    libxfont
+bpytop                                   libxft
+cairomm@1.14                             libxi
+cargo-edit                               libxinerama
+cfn-flip                                 libxkbfile
+cfn-format                               libxmu
+chars                                    libxp
+checkov                                  libxpm
+clash                                    libxrandr
+cloudformation-guard                     libxrender
+commitizen                               libxres
+condure                                  libxscrnsaver
+croc                                     libxshmfence
+cvs-fast-export                          libxt
+dbdeployer                               libxtst
+device-mapper                            libxv
+diskonaut                                libxvmc
+dog                                      libxxf86dga
+dotenv-linter                            libxxf86vm
+dotnet                                   linux-headers
+easy-rsa                                 markdownlint-cli
+envoy                                    matplotplusplus
+evernote2md                              mesa-glu
+f3d                                      mongodb/brew/libmongocrypt
+fizz                                     ncspot
+fleet-cli                                nicotine-plus
+flit                                     node@14
+flux                                     openfst
+fnm                                      openjdk@8
+font-util                                or-tools
+foreman                                  overdrive
+fpart                                    ox
+gcalcli                                  pdm
+git-hound                                phive
+gitlint                                  php@7.4
+gitql                                    pickle
+giza                                     postgresql@12
+glab                                     prometheus-cpp
+googletest                               protoc-gen-go-grpc
+gopls                                    python@3.9
+gosec                                    rain
+gost                                     regipy
+gping                                    rm-improved
+halide                                   rustscan
+httpx                                    server-go
+infracost                                showkey
+ioctl                                    shtools
+isl@0.18                                 snap
+isort                                    strace
+k3sup                                    structurizr-cli
+kcgi                                     t-rec
+kube-linter                              taskwarrior-tui
+kubecm                                   tendermint
+lab                                      terrascan
+ladspa-sdk                               tfsec
+leaf                                     tm
+libaio                                   tree-sitter
+libbsd                                   trunk
+libcap                                   utf8cpp
+libdmx                                   util-macros
+libdrm                                   v2ray
+libfontenc                               vint
+libfs                                    vivid
+libfuse                                  vtk@8.2
+libgccjit                                vulture
+libhandy                                 wangle
+libice                                   webify
+libirecovery                             x86_64-elf-gdb
+libmnl                                   xbitmaps
+libnetfilter-queue                       xcb-proto
+libnfnetlink                             xcb-util
+libpciaccess                             xdpyinfo
+libpthread-stubs                         xinput
+librttopo                                xkeyboardconfig
+libseccomp                               xorgproto
+libslirp                                 xorgrgb
+libsm                                    xterm
+libtirpc                                 xtrans
+libx11                                   yh
+libxau                                   youtube-dlc
+libxaw                                   youtubedr
+libxaw3d                                 zsh-you-should-use
+==> Updated Formulae
+Updated 4561 formulae.
+==> Renamed Formulae
+gst-validate -> gst-devtools             now-cli -> vercel-cli
+==> Deleted Formulae
+boost@1.55                 meson-internal             stlviewer
+boost@1.59                 mysql-connector-c++@1.1    unp64
+confluent-platform         ori                        woboq_codebrowser
+curl-openssl               pgplot                     xspin
+fmsx                       rmtrash                    xu4
+llvm@6                     scw@1
+
+==> Downloading https://homebrew.bintray.com/bottles/icu4c-67.1.catalina.bottle.
+==> Downloading from https://d29vzk4ow07wi7.cloudfront.net/2d1e91b5127f66e794179
+######################################################################## 100.0%
+==> Downloading https://homebrew.bintray.com/bottles/openssl%401.1-1.1.1h.catali
+==> Downloading from https://d29vzk4ow07wi7.cloudfront.net/4e5357c0cfd55cfa4ef0b
+######################################################################## 100.0%
+==> Downloading https://homebrew.bintray.com/bottles/nspr-4.29.catalina.bottle.t
+==> Downloading from https://d29vzk4ow07wi7.cloudfront.net/c47dc31bf73d954e1d462
+######################################################################## 100.0%
+==> Downloading https://homebrew.bintray.com/bottles/readline-8.0.4.catalina.bot
+==> Downloading from https://d29vzk4ow07wi7.cloudfront.net/6ae1c8e7c783f32bd22c6
+######################################################################## 100.0%
+==> Downloading https://homebrew.bintray.com/bottles/spidermonkey-1.8.5_3.catali
+==> Downloading from https://d29vzk4ow07wi7.cloudfront.net/747d9e19e27fbe0455e46
+######################################################################## 100.0%
+==> Downloading https://homebrew.bintray.com/bottles/couchdb-3.1.1.catalina.bott
+==> Downloading from https://d29vzk4ow07wi7.cloudfront.net/8d192716d7cb1aabe1e0d
+######################################################################## 100.0%
+==> Installing dependencies for couchdb: icu4c, openssl@1.1, nspr, readline and spidermonkey
+==> Installing couchdb dependency: icu4c
+==> Pouring icu4c-67.1.catalina.bottle.tar.gz
+==> Caveats
+icu4c is keg-only, which means it was not symlinked into /usr/local,
+because macOS provides libicucore.dylib (but nothing else).
+
+If you need to have icu4c first in your PATH run:
+  echo 'export PATH="/usr/local/opt/icu4c/bin:$PATH"' >> /Users/anabell/.bash_profile
+  echo 'export PATH="/usr/local/opt/icu4c/sbin:$PATH"' >> /Users/anabell/.bash_profile
+
+For compilers to find icu4c you may need to set:
+  export LDFLAGS="-L/usr/local/opt/icu4c/lib"
+  export CPPFLAGS="-I/usr/local/opt/icu4c/include"
+
+==> Summary
+🍺  /usr/local/Cellar/icu4c/67.1: 258 files, 71.2MB
+==> Installing couchdb dependency: openssl@1.1
+==> Pouring openssl@1.1-1.1.1h.catalina.bottle.tar.gz
+==> Caveats
+A CA file has been bootstrapped using certificates from the system
+keychain. To add additional certificates, place .pem files in
+  /usr/local/etc/openssl@1.1/certs
+
+and run
+  /usr/local/opt/openssl@1.1/bin/c_rehash
+
+openssl@1.1 is keg-only, which means it was not symlinked into /usr/local,
+because macOS provides LibreSSL.
+
+If you need to have openssl@1.1 first in your PATH run:
+  echo 'export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"' >> /Users/anabell/.bash_profile
+
+For compilers to find openssl@1.1 you may need to set:
+  export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+  export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+
+==> Summary
+🍺  /usr/local/Cellar/openssl@1.1/1.1.1h: 8,067 files, 18.5MB
+==> Installing couchdb dependency: nspr
+==> Pouring nspr-4.29.catalina.bottle.tar.gz
+🍺  /usr/local/Cellar/nspr/4.29: 86 files, 1.1MB
+==> Installing couchdb dependency: readline
+==> Pouring readline-8.0.4.catalina.bottle.tar.gz
+==> Caveats
+readline is keg-only, which means it was not symlinked into /usr/local,
+because macOS provides BSD libedit.
+
+For compilers to find readline you may need to set:
+  export LDFLAGS="-L/usr/local/opt/readline/lib"
+  export CPPFLAGS="-I/usr/local/opt/readline/include"
+
+==> Summary
+🍺  /usr/local/Cellar/readline/8.0.4: 48 files, 1.5MB
+==> Installing couchdb dependency: spidermonkey
+==> Pouring spidermonkey-1.8.5_3.catalina.bottle.tar.gz
+🍺  /usr/local/Cellar/spidermonkey/1.8.5_3: 104 files, 10MB
+==> Installing couchdb
+==> Pouring couchdb-3.1.1.catalina.bottle.tar.gz
+==> Caveats
+CouchDB 3.x requires a set admin password set before startup.
+Add one to your /usr/local/etc/local.ini before starting CouchDB e.g.:
+  [admins]
+  admin = youradminpassword
+
+To have launchd start couchdb now and restart at login:
+  brew services start couchdb
+Or, if you don't want/need a background service you can just run:
+  couchdb
+==> Summary
+🍺  /usr/local/Cellar/couchdb/3.1.1: 1,577 files, 46.8MB
+==> `brew cleanup` has not been run in 30 days, running now...
+Removing: /Users/anabell/Library/Caches/Homebrew/heroku--7.42.13.tar.xz... (6.9MB)
+Removing: /usr/local/Cellar/icu4c/66.1... (258 files, 70.4MB)
+Removing: /Users/anabell/Library/Caches/Homebrew/mongodb-community--4.4.0.tgz... (54.2MB)
+Removing: /Users/anabell/Library/Caches/Homebrew/mongodb-database-tools--100.1.1.zip... (69.5MB)
+Removing: /Users/anabell/Library/Caches/Homebrew/mysql@5.7--5.7.31.catalina.bottle.tar.gz... (72.0MB)
+Removing: /usr/local/Cellar/openssl@1.1/1.1.1g... (8,059 files, 18MB)
+Removing: /Users/anabell/Library/Caches/Homebrew/openssl@1.1--1.1.1g.catalina.bottle.tar.gz... (5.3MB)
+Removing: /Users/anabell/Library/Logs/Homebrew/mongodb-community... (126B)
+Removing: /Users/anabell/Library/Logs/Homebrew/mongodb-database-tools... (131B)
+Removing: /Users/anabell/Library/Logs/Homebrew/heroku... (114B)
+Removing: /Users/anabell/Library/Logs/Homebrew/heroku-node... (119B)
+Pruned 0 symbolic links and 2 directories from /usr/local
+==> Upgrading 2 dependents:
+mysql@5.7 5.7.31 -> 5.7.32, node 14.1.0 -> 15.3.0
+==> Upgrading mysql@5.7 5.7.31 -> 5.7.32
+==> Downloading https://homebrew.bintray.com/bottles/mysql%405.7-5.7.32.catalina
+==> Downloading from https://d29vzk4ow07wi7.cloudfront.net/b941e1c492c340e737423
+######################################################################## 100.0%
+==> Pouring mysql@5.7-5.7.32.catalina.bottle.tar.gz
+==> Caveats
+We've installed your MySQL database without a root password. To secure it run:
+    mysql_secure_installation
+
+MySQL is configured to only allow connections from localhost by default
+
+To connect run:
+    mysql -uroot
+
+mysql@5.7 is keg-only, which means it was not symlinked into /usr/local,
+because this is an alternate version of another formula.
+
+If you need to have mysql@5.7 first in your PATH run:
+  echo 'export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"' >> /Users/anabell/.bash_profile
+
+For compilers to find mysql@5.7 you may need to set:
+  export LDFLAGS="-L/usr/local/opt/mysql@5.7/lib"
+  export CPPFLAGS="-I/usr/local/opt/mysql@5.7/include"
+
+
+To have launchd start mysql@5.7 now and restart at login:
+  brew services start mysql@5.7
+Or, if you don't want/need a background service you can just run:
+  /usr/local/opt/mysql@5.7/bin/mysql.server start
+==> Summary
+🍺  /usr/local/Cellar/mysql@5.7/5.7.32: 319 files, 234.4MB
+Removing: /usr/local/Cellar/mysql@5.7/5.7.31... (319 files, 232.4MB)
+==> Upgrading node 14.1.0 -> 15.3.0
+==> Downloading https://homebrew.bintray.com/bottles/node-15.3.0.catalina.bottle
+==> Downloading from https://d29vzk4ow07wi7.cloudfront.net/3605db67bfb721a93c610
+######################################################################## 100.0%
+==> Pouring node-15.3.0.catalina.bottle.tar.gz
+==> Caveats
+Bash completion has been installed to:
+  /usr/local/etc/bash_completion.d
+==> Summary
+🍺  /usr/local/Cellar/node/15.3.0: 3,269 files, 55.4MB
+Removing: /usr/local/Cellar/node/14.1.0... (4,659 files, 60.8MB)
+==> Checking for dependents of upgraded formulae...
+==> No broken dependents found!
+==> Caveats
+==> icu4c
+icu4c is keg-only, which means it was not symlinked into /usr/local,
+because macOS provides libicucore.dylib (but nothing else).
+
+If you need to have icu4c first in your PATH run:
+  echo 'export PATH="/usr/local/opt/icu4c/bin:$PATH"' >> /Users/anabell/.bash_profile
+  echo 'export PATH="/usr/local/opt/icu4c/sbin:$PATH"' >> /Users/anabell/.bash_profile
+
+For compilers to find icu4c you may need to set:
+  export LDFLAGS="-L/usr/local/opt/icu4c/lib"
+  export CPPFLAGS="-I/usr/local/opt/icu4c/include"
+
+==> openssl@1.1
+A CA file has been bootstrapped using certificates from the system
+keychain. To add additional certificates, place .pem files in
+  /usr/local/etc/openssl@1.1/certs
+
+and run
+  /usr/local/opt/openssl@1.1/bin/c_rehash
+
+openssl@1.1 is keg-only, which means it was not symlinked into /usr/local,
+because macOS provides LibreSSL.
+
+If you need to have openssl@1.1 first in your PATH run:
+  echo 'export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"' >> /Users/anabell/.bash_profile
+
+For compilers to find openssl@1.1 you may need to set:
+  export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+  export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+
+==> readline
+readline is keg-only, which means it was not symlinked into /usr/local,
+because macOS provides BSD libedit.
+
+For compilers to find readline you may need to set:
+  export LDFLAGS="-L/usr/local/opt/readline/lib"
+  export CPPFLAGS="-I/usr/local/opt/readline/include"
+
+==> couchdb
+CouchDB 3.x requires a set admin password set before startup.
+Add one to your /usr/local/etc/local.ini before starting CouchDB e.g.:
+  [admins]
+  admin = youradminpassword
+
+To have launchd start couchdb now and restart at login:
+  brew services start couchdb
+Or, if you don't want/need a background service you can just run:
+  couchdb
+==> mysql@5.7
+We've installed your MySQL database without a root password. To secure it run:
+    mysql_secure_installation
+
+MySQL is configured to only allow connections from localhost by default
+
+To connect run:
+    mysql -uroot
+
+mysql@5.7 is keg-only, which means it was not symlinked into /usr/local,
+because this is an alternate version of another formula.
+
+If you need to have mysql@5.7 first in your PATH run:
+  echo 'export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"' >> /Users/anabell/.bash_profile
+
+For compilers to find mysql@5.7 you may need to set:
+  export LDFLAGS="-L/usr/local/opt/mysql@5.7/lib"
+  export CPPFLAGS="-I/usr/local/opt/mysql@5.7/include"
+
+
+To have launchd start mysql@5.7 now and restart at login:
+  brew services start mysql@5.7
+Or, if you don't want/need a background service you can just run:
+  /usr/local/opt/mysql@5.7/bin/mysql.server start
+==> node
+Bash completion has been installed to:
+  /usr/local/etc/bash_completion.d
+MacBook-Pro:Develop anabell$
