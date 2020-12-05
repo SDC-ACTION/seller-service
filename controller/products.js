@@ -1,7 +1,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-restricted-globals */
-const { retrievePrices } = require('../database/models/prices');
-const { retrieveSellers } = require('../database/models/sellers');
+const { retrievePrices } = require('../database/mongodb/prices');
+const { retrieveSellers } = require('../database/mongodb/sellers');
 const { createQuotes } = require('../services/quotes');
 
 const prices = (req, res) => {
