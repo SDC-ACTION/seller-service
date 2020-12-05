@@ -1,8 +1,8 @@
 /* eslint-disable no-plusplus */
 const fs = require('fs');
 const path = require('path');
-const fake = require('../fake-data');
-const fakeFn = require('../generator');
+const fake = require('./fake-data');
+const fakeFn = require('./generator');
 
 // folder for csv files
 fs.mkdir(path.join(__dirname, '/data'), () => { });
@@ -40,7 +40,7 @@ writeProductSeller.write('product_id, seller_id, price\n');
 writeToFile(writeProductSeller, 'utf-8', fakeFn.getProductSeller, fake.productSellerCount, () => {
   writeProductSeller.end();
 });
-
+console.log('product-seller complete');
 // seller
 
 const writeSeller = fs.createWriteStream('./data/seller.csv');
@@ -48,14 +48,14 @@ writeSeller.write('id, name, return_policy_id, delivery_id\n');
 writeToFile(writeSeller, 'utf-8', fakeFn.getSeller, fake.sellerCount, () => {
   writeSeller.end();
 });
-
+console.log('seller complete');
 // delivery option
 const writeDeliveryOption = fs.createWriteStream('./data/delivery_option.csv');
 writeDeliveryOption.write('id, fee, min_amount, days\n');
 writeToFile(writeDeliveryOption, 'utf-8', fakeFn.getDeliveryOption, fake.deliveryOptions.length, () => {
   writeDeliveryOption.end();
 });
-
+console.log('delivery_option complete');
 // return policy
 const writeReturnPolicy = fs.createWriteStream('./data/return_policy.csv');
 writeReturnPolicy.write('id, description\n');
