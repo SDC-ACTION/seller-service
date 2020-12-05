@@ -10,10 +10,10 @@ module.exports = {
         })
         .catch((error) => {
           console.log(error);
-          res.sendStatus(500);
+          res.status(500).send(error);
         });
     } else {
-      res.send(500);
+      res.status(500).send('seller object not found');
     }
   },
   get: (req, res) => {
@@ -46,10 +46,10 @@ module.exports = {
         .then(() => res.send(200))
         .catch((error) => {
           console.log(error);
-          res.send(500);
+          res.send(500).send(error);
         });
     } else {
-      res.send(500);
+      res.sendStatus(500);
     }
   },
 };
