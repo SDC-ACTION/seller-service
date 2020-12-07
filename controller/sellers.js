@@ -1,4 +1,4 @@
-const sellers = require('../database/mongodb/sellers');
+const sellers = require('../database/mysql/sellers');
 
 module.exports = {
   create: (req, res) => {
