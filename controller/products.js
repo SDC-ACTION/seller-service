@@ -9,12 +9,11 @@ const prices = (req, res) => {
   if (req.params.productId !== undefined) {
     retrievePrices(req.params.productId)
       .then((productData) => {
-        console.log('got it');
-        res.send(productData);
+        res.status(200).send(productData);
       });
   } else {
     retrievePrices()
-      .then((productData) => res.send(productData));
+      .then((productData) => res.status(200).send(productData));
   }
 };
 
