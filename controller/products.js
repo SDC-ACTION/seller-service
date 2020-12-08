@@ -5,7 +5,6 @@ const { retrieveSellers } = require('../database/mongodb/sellers');
 const { createQuotes } = require('../services/quotes');
 
 const prices = (req, res) => {
-  console.log(req.params);
   if (req.params.productId !== undefined) {
     retrievePrices(req.params.productId)
       .then((productData) => {
@@ -24,8 +23,8 @@ const sellers = (req, res) => {
 
 const quotes = (req, res) => {
   let id = null;
-  if (req.params.productId) {
-    id = req.params.productId;
+  if (req.query.productId) {
+    id = req.query.productId;
   }
 
   if (id && isNaN(Number(id))) {
