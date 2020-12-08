@@ -28,10 +28,11 @@ const PORT = process.env.PORT || 3002;
 
 // serve client files
 app.use('/', express.static(path.join(__dirname, '/../client/dist')));
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '/../client/dist/index.html'));
-// });
 app.use('/api', router);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/../client/dist/index.html'));
+});
 
 app.listen(PORT, () => {
   console.log(`App listening at http://${hostname}:${PORT}`);
