@@ -1,8 +1,7 @@
-// const mysql = require('./index');
+const mysql = require('./index');
 
 module.exports = {
   retrieveSellers: (param) => {
-    console.log('wrong');
     let q = '';
     let p = null;
     if (!param) {

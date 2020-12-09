@@ -1,8 +1,8 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-restricted-globals */
-const { retrievePrices } = require('../database/mongodb/prices');
-const { retrieveSellers } = require('../database/mongodb/sellers');
-const { createQuotes } = require('../services/mongodb/quotes');
+const { retrievePrices } = require('../database/mysql/prices');
+const { retrieveSellers } = require('../database/mysql/sellers');
+const { createQuotes } = require('../services/mysql/quotes');
 
 const prices = (req, res) => {
   if (req.params.productId !== undefined) {
