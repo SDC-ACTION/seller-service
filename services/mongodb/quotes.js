@@ -1,3 +1,4 @@
+const { retrievePrices } = require('../../database/mongodb/prices');
 const {
   sellerName,
   sellerOffer,
@@ -6,7 +7,7 @@ const {
 } = require('./helper');
 
 /* eslint-disable no-plusplus */
-module.exports.createQuotes = (prices, sellers, limit) => {
+const sellerData = (prices, sellers, limit) => {
   const response = [];
   const fetchSellerMeta = (num, tag, array) => {
     if (tag === 'name') {
@@ -52,4 +53,15 @@ module.exports.createQuotes = (prices, sellers, limit) => {
     response.push(product);
   }
   return response;
+};
+
+let priceInfo;
+let sellerInfo;
+module.exports.createQuotes = (data, id) => {
+  sellerInfo = data;
+  return retrievePrices(id)
+    .then((productData) => {
+      priceInfo = productData;
+      return sellerData(priceInfo, sellerInfo, 10);
+    });
 };

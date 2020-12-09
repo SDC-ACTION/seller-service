@@ -6,7 +6,7 @@ const path = require('path');
 const morgan = require('morgan');
 const parser = require('body-parser');
 const cors = require('cors');
-const db = require('../database/mysql');
+const db = require('../database/mongodb');
 
 // router
 const router = require('./routes');
@@ -27,12 +27,8 @@ const hostname = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3002;
 
 // serve client files
-app.use('/', express.static(path.join(__dirname, '/../client/dist')));
 app.use('/api', router);
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/../client/dist/index.html'));
-});
+app.use('*', express.static(path.join(__dirname, '/../client/dist')));
 
 app.listen(PORT, () => {
   console.log(`App listening at http://${hostname}:${PORT}`);

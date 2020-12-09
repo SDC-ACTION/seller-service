@@ -2,7 +2,7 @@
 /* eslint-disable no-restricted-globals */
 const { retrievePrices } = require('../database/mongodb/prices');
 const { retrieveSellers } = require('../database/mongodb/sellers');
-const { createQuotes } = require('../services/quotes');
+const { createQuotes } = require('../services/mongodb/quotes');
 
 const prices = (req, res) => {
   if (req.params.productId !== undefined) {
@@ -12,7 +12,9 @@ const prices = (req, res) => {
       });
   } else {
     retrievePrices()
-      .then((productData) => res.status(200).send(productData));
+      .then((productData) => {
+        res.status(200).send(productData);
+      });
   }
 };
 
@@ -31,26 +33,19 @@ const quotes = (req, res) => {
     return res.status(400).send('Bad Request.');
   }
 
-  let priceInfo;
-  let sellerInfo;
-
-  retrieveSellers()
-    .then((sellerData) => {
-      sellerInfo = sellerData;
-      return retrievePrices(id);
-    })
-    .then((productData) => {
-      priceInfo = productData;
-      return true;
-    })
-    .then(() => createQuotes(priceInfo, sellerInfo, req.params.sellerLimit))
-    .then((quoteData) => {
-      if (!quoteData.length) {
-        return res.status(404).send('Product Not Found.');
+  retrieveSellers(id)
+    .then((data) => createQuotes(data, id))
+    .then((data) => {
+      if (data.length > 0) {
+        res.send(data);
+      } else {
+        res.status(404).send('product not found');
       }
-      return res.send(quoteData);
     })
-    .catch(() => res.status(500).send('Internal Server Error.'));
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
 };
 
 module.exports = {
