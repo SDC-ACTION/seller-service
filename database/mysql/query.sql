@@ -1,7 +1,10 @@
-SELECT ps.product_id, s.name as seller_name,
+SELECT ps.product_id AS id,
+    s.name AS sellername,
     ps.price,
-    LEFT(rp.description, 20) as description,
-    do.fee, do.min_amount, do.days
+    rp.description,
+    do.fee,
+    do.min_amount,
+    do.days
 FROM product_seller AS ps
 INNER JOIN seller AS s
   ON ps.seller_id = s.id

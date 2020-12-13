@@ -1,11 +1,10 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-restricted-globals */
-const { retrievePrices } = require('../database/mongodb/prices');
-const { retrieveSellers } = require('../database/mongodb/sellers');
-const { createQuotes } = require('../services/quotes');
+const { retrievePrices } = require('../database/mysql/prices');
+const { retrieveSellers } = require('../database/mysql/sellers');
+const { createQuotes } = require('../services/mysql/quotes');
 
 const prices = (req, res) => {
-  console.log(req.params);
   if (req.params.productId !== undefined) {
     retrievePrices(req.params.productId)
       .then((productData) => {
@@ -13,7 +12,9 @@ const prices = (req, res) => {
       });
   } else {
     retrievePrices()
-      .then((productData) => res.status(200).send(productData));
+      .then((productData) => {
+        res.status(200).send(productData);
+      });
   }
 };
 
@@ -24,34 +25,27 @@ const sellers = (req, res) => {
 
 const quotes = (req, res) => {
   let id = null;
-  if (req.params.productId) {
-    id = req.params.productId;
+  if (req.query.productId) {
+    id = req.query.productId;
   }
 
   if (id && isNaN(Number(id))) {
     return res.status(400).send('Bad Request.');
   }
 
-  let priceInfo;
-  let sellerInfo;
-
-  retrieveSellers()
-    .then((sellerData) => {
-      sellerInfo = sellerData;
-      return retrievePrices(id);
-    })
-    .then((productData) => {
-      priceInfo = productData;
-      return true;
-    })
-    .then(() => createQuotes(priceInfo, sellerInfo, req.params.sellerLimit))
-    .then((quoteData) => {
-      if (!quoteData.length) {
-        return res.status(404).send('Product Not Found.');
+  retrieveSellers(id)
+    .then((data) => createQuotes(data, id))
+    .then((data) => {
+      if (data.length > 0) {
+        res.send(data);
+      } else {
+        res.status(404).send('product not found');
       }
-      return res.send(quoteData);
     })
-    .catch(() => res.status(500).send('Internal Server Error.'));
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
 };
 
 module.exports = {
