@@ -63,5 +63,6 @@ module.exports.createQuotes = (data, id) => {
     .then((productData) => {
       priceInfo = productData;
       return sellerData(priceInfo, sellerInfo, 10);
-    });
+    })
+    .catch(() => []);
 };
