@@ -34,8 +34,7 @@ const writeToFile = (writer, encoding, getText, size, callback) => {
 };
 
 // product-seller
-
-const writeProductSeller = fs.createWriteStream('./data/product_seller.csv');
+const writeProductSeller = fs.createWriteStream(path.join(__dirname, './data/product_seller.csv'));
 writeProductSeller.write('product_id, seller_id, price\n');
 writeToFile(writeProductSeller, 'utf-8', fakeFn.getProductSeller, fake.productSellerCount, () => {
   writeProductSeller.end();
@@ -43,28 +42,28 @@ writeToFile(writeProductSeller, 'utf-8', fakeFn.getProductSeller, fake.productSe
 
 // seller
 
-const writeSeller = fs.createWriteStream('./data/seller.csv');
+const writeSeller = fs.createWriteStream(path.join(__dirname, './data/seller.csv'));
 writeSeller.write('id, name, return_policy_id, delivery_id\n');
 writeToFile(writeSeller, 'utf-8', fakeFn.getSeller, fake.sellerCount, () => {
   writeSeller.end();
 });
 
 // delivery option
-const writeDeliveryOption = fs.createWriteStream('./data/delivery_option.csv');
+const writeDeliveryOption = fs.createWriteStream(path.join(__dirname, './data/delivery_option.csv'));
 writeDeliveryOption.write('id, fee, min_amount, days\n');
 writeToFile(writeDeliveryOption, 'utf-8', fakeFn.getDeliveryOption, fake.deliveryOptions.length, () => {
   writeDeliveryOption.end();
 });
 
 // return policy
-const writeReturnPolicy = fs.createWriteStream('./data/return_policy.csv');
+const writeReturnPolicy = fs.createWriteStream(path.join(__dirname, './data/return_policy.csv'));
 writeReturnPolicy.write('id, description\n');
 writeToFile(writeReturnPolicy, 'utf-8', fakeFn.getReturnPolicy, fake.returnPolicies.length, () => {
   writeReturnPolicy.end();
 });
 
 // tax
-const writeTax = fs.createWriteStream('./data/state_tax.csv');
+const writeTax = fs.createWriteStream(path.join(__dirname, './data/state_tax.csv'));
 writeTax.write('state, combined_rate\n');
 writeToFile(writeTax, 'utf-8', fakeFn.getTax, fake.stateTaxRates.length, () => {
   writeTax.end();
