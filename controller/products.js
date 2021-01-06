@@ -1,6 +1,6 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-restricted-globals */
-const { retrievePrices } = require('../database/mysql/prices');
+const { retrievePrices, retrieveAllPrices } = require('../database/mysql/prices');
 const { retrieveSellers } = require('../database/mysql/sellers');
 const { createQuotes } = require('../services/mysql/quotes');
 
@@ -9,11 +9,19 @@ const prices = (req, res) => {
     retrievePrices(req.params.productId)
       .then((productData) => {
         res.status(200).send(productData);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500);
       });
   } else {
-    retrievePrices()
+    retrieveAllPrices()
       .then((productData) => {
         res.status(200).send(productData);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500);
       });
   }
 };
