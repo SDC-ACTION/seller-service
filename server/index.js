@@ -30,6 +30,7 @@ const PORT = process.env.PORT || 3002;
 // serve client files
 app.use('/', express.static(path.join(__dirname, '/../client/dist')));
 app.use('/api', router);
+app.use('/health', (req, res) => { res.send('Up'); });
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/../client/dist/index.html'));
 });
