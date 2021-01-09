@@ -4,7 +4,10 @@
 
 
 ## Usage
+## Product Quotes
+http://localhost:3002/api/product/prices/1001
 
+## API
 ### POST /api/seller
 ```  body
     {
