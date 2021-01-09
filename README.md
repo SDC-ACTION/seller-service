@@ -1,13 +1,22 @@
 # Project Name
 
-> Seller Service
+> Seller Product Quotes Service
 
-
-## Usage
-## Product Quotes
-http://localhost:3002/api/product/prices/1001
 
 ## API
+### GET /api/product/quotes
+http://localhost:3002/api/product/quotes
+
+### GET /api/product/sellers
+http://localhost:3002/api/product/sellers
+
+### GET /api/product/prices
+http://localhost:3002/api/product/prices
+
+### GET /api/product/prices/:productId
+http://localhost:3002/api/product/prices/1001
+
+
 ### POST /api/seller
 ```  body
     {
@@ -25,6 +34,8 @@ http://localhost:3002/api/product/prices/1001
     }
 ```
 ### GET /api/seller/:sellerId
+http://localhost:3002/api/seller/1000
+
 ### PUT /api/seller
 ```
   body
@@ -43,4 +54,3 @@ http://localhost:3002/api/product/prices/1001
     }
 ```
 ### DEL /api/seller/:sellerId
-
