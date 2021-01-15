@@ -1,7 +1,11 @@
 
-DROP DATABASE IF EXISTS shopping;
-CREATE DATABASE shopping;
-USE shopping;
+SET autocommit=0;
+SET unique_checks=0;
+SET foreign_key_checks=0;
+
+DROP DATABASE IF EXISTS shop;
+CREATE DATABASE shop;
+USE shop;
 
 CREATE TABLE seller (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -72,3 +76,8 @@ FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES;
+
+COMMIT;
+
+SET unique_checks=0;
+SET foreign_key_checks=0;
