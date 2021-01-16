@@ -1,6 +1,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-restricted-globals */
 const redis = require('redis');
+const { promisify } = require('util');
 const { retrievePrices, retrieveAllPrices } = require('../database/mysql/prices');
 const { retrieveSellers } = require('../database/mysql/sellers');
 const { createQuotes } = require('../services/mysql/quotes');
@@ -16,6 +17,9 @@ client.on('error', (error) => {
 client.on('ready', () => {
   console.log('connected to Redis');
 });
+
+const get = promisify(client.get).bind(client);
+const set = promisify(client.set).bind(client);
 
 const prices = (req, res) => {
   if (req.params.productId !== undefined) {
@@ -85,13 +89,29 @@ const quotes = (req, res) => {
   };
 
   // check the cache server for the data first
-  client.get(id, (err, value) => {
-    if (value) {
-      returnCachedValue(value);
-    } else {
-      returnDatabaseValue();
-    }
-  });
+  get(id)
+    .then((value) => {
+      if (value) {
+        returnCachedValue(value);
+      } else {
+        console.log('--- cache miss');
+        retrieveSellers(id)
+          .then((data) => createQuotes(data, id))
+          .then((quote) => {
+            set(id, JSON.stringify(quote)
+              .then((reply) => console.log(reply)));
+            return quote;
+          })
+          .then((quote) => {
+            if (quote.length > 0) {
+              res.send(quote);
+            } else {
+              res.status(404).send('product not found');
+            }
+          });
+      }
+    })
+    .catch((error) => console.log(error));
 };
 
 module.exports = {
