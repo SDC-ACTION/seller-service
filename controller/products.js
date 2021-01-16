@@ -98,8 +98,8 @@ const quotes = (req, res) => {
         retrieveSellers(id)
           .then((data) => createQuotes(data, id))
           .then((quote) => {
-            set(id, JSON.stringify(quote)
-              .then((reply) => console.log(reply)));
+            set(id, JSON.stringify(quote))
+              .then((reply) => console.log(reply));
             return quote;
           })
           .then((quote) => {
