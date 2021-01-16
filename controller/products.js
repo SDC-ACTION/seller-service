@@ -48,7 +48,72 @@ const sellers = (req, res) => {
     .then((sellerData) => res.send(sellerData));
 };
 
-const quotes = (req, res) => {
+const quotesCached = async (req, res, next) => {
+  console.log('looking in cache');
+  let id = null;
+  if (req.query.productId) {
+    id = req.query.productId;
+  }
+
+  if (id && isNaN(Number(id))) {
+    return res.status(400).send('Bad Request.');
+  }
+
+  await get(id)
+    .then((data) => {
+      if (data) {
+        console.log('*** cache hit');
+        const value = JSON.parse(data);
+        if (value.length > 0) {
+          res.send(value);
+        } else {
+          res.status(404).send('product not found');
+        }
+      } else {
+        next();
+      }
+    });
+};
+
+const quotesDatabase = async (req, res) => {
+  console.log('looking in database');
+  let id = null;
+  if (req.query.productId) {
+    id = req.query.productId;
+  }
+
+  if (id && isNaN(Number(id))) {
+    return res.status(400).send('Bad Request.');
+  }
+
+  const sendResponse = (data) => {
+    res.send(data);
+    return Promise.resolve();
+  };
+
+  console.log('--- cache miss');
+  retrieveSellers(id)
+    .then((data) => createQuotes(data, id))
+    .then((data) => {
+      if (data.length > 0) {
+        sendResponse(data)
+          .then(() => {
+            set(id, JSON.stringify(data))
+              .then((reply) => {
+                console.log('+++ set key result: ', reply);
+              });
+          });
+      } else {
+        res.status(404).send('product not found');
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+};
+
+const quotes = (req, res, next) => {
   let id = null;
   if (req.query.productId) {
     id = req.query.productId;
@@ -118,4 +183,6 @@ module.exports = {
   prices,
   sellers,
   quotes,
+  quotesCached,
+  quotesDatabase,
 };
